@@ -1,0 +1,31 @@
+{
+  "name": "@liveops/ws-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fake log/metrics generator and WebSocket broadcast server for LiveOps",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@liveops/shared": "*",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/node": "^22.7.5",
+    "@types/ws": "^8.5.12",
+    "eslint": "^9.14.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2",
+    "vitest": "^2.1.3"
+  }
+}

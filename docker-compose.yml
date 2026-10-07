@@ -1,0 +1,32 @@
+services:
+  ws-server:
+    build:
+      context: .
+      dockerfile: apps/ws-server/Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: "4000"
+      SCENARIO: "normal"
+      BATCH_INTERVAL_MS: "200"
+      EVENTS_PER_BATCH: "50"
+      HISTORY_CAPACITY: "200000"
+      HEARTBEAT_INTERVAL_MS: "30000"
+    volumes:
+      - ./apps/ws-server/src:/repo/apps/ws-server/src
+      - ./packages/shared/src:/repo/packages/shared/src
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_WS_URL: "ws://localhost:4000"
+      NEXT_PUBLIC_HISTORY_URL: "http://localhost:4000"
+    depends_on:
+      - ws-server
+    volumes:
+      - ./apps/web:/repo/apps/web
+      - ./packages/shared/src:/repo/packages/shared/src

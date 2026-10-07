@@ -1,0 +1,23 @@
+{
+  "name": "liveops",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Real-time observability dashboard: WebSocket log/metrics stream, virtualized table, filters synced to the URL",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,ws-server -c blue,green \"npm run dev -w @liveops/web\" \"npm run dev -w @liveops/ws-server\"",
+    "dev:web": "npm run dev -w @liveops/web",
+    "dev:ws-server": "npm run dev -w @liveops/ws-server",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

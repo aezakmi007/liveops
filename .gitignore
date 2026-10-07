@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+.pnp*
+
+# build output
+dist/
+.next/
+out/
+build/
+
+# env
+.env
+.env*.local
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# testing
+coverage/
+playwright-report/
+test-results/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
