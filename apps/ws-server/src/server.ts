@@ -52,6 +52,19 @@ function broadcastBatch(events: LogEvent[]): void {
 }
 
 const server = createServer((req, res) => {
+  // The REST endpoints below are meant to be called from any origin (local
+  // dev on a different port, a deployed frontend on a different domain) —
+  // there's no auth boundary to protect in this demo, so allow all origins
+  // rather than hardcoding one that breaks as soon as the frontend moves.
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   const url = new URL(req.url ?? "/", `http://${req.headers.host ?? "localhost"}`);
 
   if (req.method === "GET" && url.pathname === "/history") {

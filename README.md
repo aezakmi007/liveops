@@ -5,6 +5,10 @@ virtualized 100k+ row table, live metrics, filters synced to the URL.
 
 > Day 1 of a 7-day build. This README grows each day; the full version
 > (architecture diagram, performance numbers, scaling notes) lands on Day 7.
+>
+> **[docs/devlog](docs/devlog/README.md)** has the day-by-day build log —
+> what shipped, why each decision was made over the alternatives, and the
+> real bugs hit and fixed along the way.
 
 ## What's here (Day 1)
 
